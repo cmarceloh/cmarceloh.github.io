@@ -11,10 +11,12 @@ body {
   line-height: 1.6;
 }
 
-/* Colores: Azul oscuro / Celeste */
+/* Paleta: grafito / verde agua */
 :root {
-  --azul-oscuro: #0b2b5e;
-  --celeste: #3a86ff;
+  --azul-oscuro: #24313a;
+  --celeste: #18a6a3;
+  --fondo-header: #2c3a42;
+  --fondo-footer: #172126;
   --fondo-claro: #f4f7f6;
   --blanco: #ffffff;
 }
@@ -25,7 +27,7 @@ body {
 
 /* --- HEADER Y NAVEGACIÓN --- */
 .header {
-  background-color: var(--azul-oscuro);
+  background-color: var(--fondo-header);
   color: var(--blanco);
   padding: 1rem 5%;
   display: flex;
@@ -41,7 +43,15 @@ body {
   font-weight: 700;
   color: var(--blanco);
   text-decoration: none;
-  transition: color 0.3s ease;
+  display: inline-block;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.logo:hover {
+  color: #8be3d7;
+  transform: scale(1.05);
 }
 
 /* Ocultar elementos del menú hamburguesa en PC */
@@ -90,12 +100,41 @@ h2 {
   margin: 0 auto;
 }
 
-.foto-perfil {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%; /* Foto redonda y moderna */
-  object-fit: cover;
+.marco-foto {
+  width: min(250px, 80vw);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  flex: 0 0 auto;
+  background-color: var(--fondo-claro);
+  border: 8px solid var(--blanco);
+  border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transition: transform 0.35s ease;
+}
+
+.marco-foto:hover .foto-perfil {
+  transform: scale(1.05);
+}
+
+.marco-foto:hover {
+  border-color: var(--celeste);
+  box-shadow:
+    0 0 0 4px rgba(58, 134, 255, 0.18),
+    0 8px 20px rgba(11, 43, 94, 0.22);
 }
 
 .datos {
@@ -147,9 +186,26 @@ h2 {
   background-color: var(--blanco);
   padding: 2rem;
   border-radius: 8px;
+  border: 2px solid #d8e5f0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   font-weight: 700;
   color: var(--azul-oscuro);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  background-color: #f0f8ff;
+  border-color: var(--celeste);
+  box-shadow:
+    0 0 0 4px rgba(58, 134, 255, 0.14),
+    0 10px 18px rgba(11, 43, 94, 0.14);
+  color: var(--celeste);
+  transform: translateY(-6px);
 }
 
 /* --- CURSOS: SISTEMA DE PAGINACIÓN SOLO CSS --- */
@@ -214,7 +270,18 @@ h2 {
   object-fit: cover; /* <--- Recorta la imagen proporcionalmente para que llene el espacio sin deformarse */
   object-position: top; /* <--- Asegura que se vea la parte superior del certificado (importante para los verticales) */
   border-radius: 4px;
+  border: 3px solid #b8c8d8;
   margin-bottom: 1rem;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.curso-item:hover .curso-img {
+  border-color: var(--celeste);
+  box-shadow:
+    0 0 0 4px rgba(58, 134, 255, 0.16),
+    0 6px 16px rgba(11, 43, 94, 0.2);
 }
 
 /* --- BOTONES VER MÁS / OCULTAR (elegantes) --- */
@@ -351,7 +418,7 @@ h2 {
 
 /* --- FOOTER --- */
 .footer {
-  background-color: var(--azul-oscuro);
+  background-color: var(--fondo-footer);
   color: var(--blanco);
   text-align: center;
   padding: 2rem;
