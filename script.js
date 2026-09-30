@@ -71,7 +71,7 @@
     link.addEventListener("click", closeMobileMenu);
   });
 
-  // ── Formulario de contacto (Fetch API → contacto.php) ──
+  // ── Formulario de contacto (Fetch API → FormSubmit) ──
   var form = document.getElementById("contact-form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -90,38 +90,25 @@
         msgEl.textContent = "";
       }
 
-      // Detección de protocolo file:/// (doble clic local en el archivo html)
-      var isFile = window.location.protocol === "file:";
-      if (isFile) {
-        setTimeout(function () {
-          if (msgEl) {
-            msgEl.className = "contact-msg success";
-            msgEl.innerHTML =
-              "✅ <strong>Modo Local detectado:</strong><br><small>El formulario se ha validado correctamente. Al subir tu web a tu hosting con soporte PHP, el correo se enviará a tu dirección configurada.</small>";
-          }
-          form.reset();
-          if (btn) {
-            btn.textContent = originalText;
-            btn.disabled = false;
-          }
-        }, 500);
-        return;
-      }
+      var formData = new FormData(form);
+      var data = {};
+      formData.forEach(function (value, key) {
+        data[key] = value;
+      });
 
-      var data = new FormData(form);
-
-      fetch("contacto.php", {
+      fetch(form.action, {
         method: "POST",
-        body: data,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
       })
         .then(function (res) {
-          if (!res.ok) {
-            throw new Error("HTTP " + res.status);
-          }
           return res.json();
         })
         .then(function (json) {
-          if (json.success) {
+          if (json.success === true || json.success === "true") {
             if (msgEl) {
               msgEl.className = "contact-msg success";
               msgEl.textContent =
@@ -129,23 +116,15 @@
             }
             form.reset();
           } else {
-            throw new Error(json.message || "Error");
+            throw new Error(json.message || "No se pudo enviar el mensaje.");
           }
         })
         .catch(function (err) {
           console.error("Error formulario:", err);
-          var isLocalhost =
-            window.location.hostname === "localhost" ||
-            window.location.hostname === "127.0.0.1";
           if (msgEl) {
             msgEl.className = "contact-msg error";
-            if (isLocalhost) {
-              msgEl.innerHTML =
-                "ℹ️ <strong>Entorno Local (sin PHP activo):</strong><br><small>No se pudo conectar con el script PHP local. Al subir los archivos a tu hosting con PHP el formulario enviará correos reales automáticamente.</small>";
-            } else {
-              msgEl.textContent =
-                "Error al enviar. Por favor, intenta nuevamente.";
-            }
+            msgEl.textContent =
+              err.message || "Error al enviar. Por favor, intenta nuevamente.";
           }
         })
         .finally(function () {
