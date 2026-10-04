@@ -1,420 +1,1150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" data-theme="dark">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Favicon / Ícono de la pestaña del navegador -->
-  <link rel="icon" type="image/png" href="img/favicon.png"/>
-  <link rel="apple-touch-icon" href="img/favicon.png"/>
+    <!-- Favicon / Ícono de la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
 
-  <!-- Script anti-parpadeo tema (Oscuro por defecto) -->
-  <script>
-    (function() {
-      var saved = localStorage.getItem('cmh-site-theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', saved);
-    })();
-  </script>
+    <!-- Script anti-parpadeo tema (Oscuro por defecto) -->
+    <script>
+      (function () {
+        var saved = localStorage.getItem("cmh-site-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", saved);
+      })();
+    </script>
 
-  <!-- SEO Meta Tags -->
-  <title>Inicio | Mi Portafolio</title>
-  <meta name="description" content="Mi Portafolio- Carlos Marcelo Hernandez"/>
-  <meta name="keywords" content="portafolio, carlos marcelo hernandez, desarrollo web, 1144048519"/>
-  <meta name="author" content="Mi Portafolio"/>
-  <meta name="robots" content="index, follow"/>
+    <!-- SEO Meta Tags -->
+    <title>Inicio | Mi Portafolio</title>
+    <meta
+      name="description"
+      content="Mi Portafolio- Carlos Marcelo Hernandez"
+    />
+    <meta
+      name="keywords"
+      content="portafolio, carlos marcelo hernandez, desarrollo web, 1144048519"
+    />
+    <meta name="author" content="Mi Portafolio" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Inicio | Mi Portafolio"/>
-  <meta property="og:description" content="Mi Portafolio- Carlos Marcelo Hernandez"/>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Inicio | Mi Portafolio" />
+    <meta
+      property="og:description"
+      content="Mi Portafolio- Carlos Marcelo Hernandez"
+    />
 
-  <!-- Fuentes Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER Y NAVEGACIÓN STICKY -->
+    <header class="site-header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="navbar-brand">
+            <span class="brand-text-logo">Mi Portafolio !</span>
+          </a>
+          <ul class="desktop-nav">
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="mis-cursos.html">Mis Cursos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="sobre-mi.html">Sobre Mi</a></li>
+          </ul>
+          <div class="navbar-actions">
+            <button
+              class="theme-toggle-btn"
+              id="siteThemeToggle"
+              aria-label="Cambiar tema claro u oscuro"
+              title="Modo Claro / Modo Oscuro"
+            >
+              <span class="theme-icon-light">☀️</span>
+              <span class="theme-icon-dark">🌙</span>
+            </button>
+            <button
+              class="hamburger-btn"
+              id="siteHamburger"
+              aria-label="Abrir menú"
+              aria-expanded="false"
+            >
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-  <!-- HEADER Y NAVEGACIÓN STICKY -->
-  <header class="site-header">
-    <div class="container">
-      <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
-          <span class="brand-text-logo">Mi Portafolio !</span>
-        </a>
-        <ul class="desktop-nav">
-          <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="mis-cursos.html">Mis Cursos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="sobre-mi.html">Sobre Mi</a></li>
-        </ul>
-        <div class="navbar-actions">
-          <button class="theme-toggle-btn" id="siteThemeToggle" aria-label="Cambiar tema claro u oscuro" title="Modo Claro / Modo Oscuro">
+    <!-- MENÚ LATERAL MÓVIL / TABLET -->
+    <div class="mobile-overlay" id="siteMobileOverlay"></div>
+    <aside class="mobile-drawer" id="siteMobileDrawer">
+      <div class="mobile-drawer-header">
+        <span class="mobile-drawer-title">Mi Portafolio</span>
+        <div style="display: inline-flex; align-items: center; gap: 0.6rem">
+          <button
+            class="theme-toggle-btn"
+            id="siteDrawerThemeToggle"
+            aria-label="Cambiar tema"
+            title="Modo Claro / Modo Oscuro"
+          >
             <span class="theme-icon-light">☀️</span>
             <span class="theme-icon-dark">🌙</span>
           </button>
-          <button class="hamburger-btn" id="siteHamburger" aria-label="Abrir menú" aria-expanded="false">
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
+          <button
+            class="mobile-drawer-close"
+            id="siteMobileClose"
+            aria-label="Cerrar menú"
+          >
+            &times;
           </button>
         </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- MENÚ LATERAL MÓVIL / TABLET -->
-  <div class="mobile-overlay" id="siteMobileOverlay"></div>
-  <aside class="mobile-drawer" id="siteMobileDrawer">
-    <div class="mobile-drawer-header">
-      <span class="mobile-drawer-title">Mi Portafolio</span>
-      <div style="display:inline-flex;align-items:center;gap:0.6rem">
-        <button class="theme-toggle-btn" id="siteDrawerThemeToggle" aria-label="Cambiar tema" title="Modo Claro / Modo Oscuro">
-          <span class="theme-icon-light">☀️</span>
-          <span class="theme-icon-dark">🌙</span>
-        </button>
-        <button class="mobile-drawer-close" id="siteMobileClose" aria-label="Cerrar menú">&times;</button>
       </div>
-    </div>
-    <ul class="mobile-nav-links">
-      <li><a href="index.html" class="active">Inicio</a></li>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="mis-cursos.html">Mis Cursos</a></li>
         <li><a href="contacto.html">Contacto</a></li>
         <li><a href="sobre-mi.html">Sobre Mi</a></li>
-    </ul>
-  </aside>
+      </ul>
+    </aside>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
-    <section id="hero" class="section-hero" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) center/cover, url('img/hero-bg-39ed6d.jpg') center/cover no-repeat;padding:6rem 0">
-  <div class="container">
-    <div class="hero-portfolio-layout">
-      <div class="hero-avatar-box">
-        <img src="img/hero-avatar-710cf7.jpg" alt="Carlos Marcelo Hernandez" class="hero-avatar-img" loading="eager" decoding="async"/>
-      </div>
-      <div class="hero-portfolio-content">
-        <div class="hero-status-pill"><span class="status-indicator-dot" style="background:#10b981;box-shadow:0 0 10px #10b981"></span><span>Disponible para proyectos</span></div>
-        <h1 class="hero-portfolio-title">Carlos Marcelo Hernandez</h1>
-        <div class="hero-portfolio-role">Desarrollador de Software en formación</div>
-        <p class="hero-portfolio-desc">Estudiante en el IFTS 29. Me apasiona el desarrollo web y resolver problemas lógicos, el desarrollo de aplicaciones y la creación de videojuegos con Unity. Siempre buscando aprender nuevas tecnologías. Tambien soy fan del hardware y la electrónica, me gusta armar y desarmar computadoras y celulares.</p>
-        <div class="hero-portfolio-buttons">
-          <a href="https://github.com/cmarceloh" class="btn btn-primary" style="background:#ffffff;color:#05668d;box-shadow:0 4px 18px rgba(0,0,0,.18);" target="_blank" rel="noopener noreferrer">Visitar mi perfil de GitHub</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="slideshow" class="section-slideshow">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:2.2rem">
-      <h2 style="font-size:2.4rem;margin-bottom:.6rem">Formación y Certificaciones</h2>
-      <p style="color:var(--color-text-muted);font-size:1.15rem">Un recorrido por mis estudios, capacitaciones y logros profesionales.</p>
-    </div>
-    <div class="dual-slider-container" data-interval="3" data-total="15">
-      <div class="dual-slider-box">
-        <div class="slider-progress-bar"><div class="slider-progress-fill"></div></div>
-        <div class="dual-slider-viewport">
-          <div class="dual-slider-stage">
-
-            <div class="dual-slide-card" data-slide-index="0">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-1-5edb9d.jpg', 'Taller GitHub', 'Constancia de participación en el taller enfocado en la creación y armado del perfil profesional en GitHub. Esta capacitación fue brindada por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través de la Agencia de Habilidades para el Futuro y el programa Talento Tech, en julio de 2025.')">
-                <img src="img/gallery-1-5edb9d.jpg" alt="Taller GitHub" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Taller GitHub</h3>
-                <p class="dual-slide-desc">Constancia de participación en el taller enfocado en la creación y armado del perfil profesional en GitHub. Esta capacitación fue brindada por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través de la Agencia de Habilidades para el Futuro y el programa Talento Tech, en julio de 2025.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-1-5edb9d.jpg', 'Taller GitHub', 'Constancia de participación en el taller enfocado en la creación y armado del perfil profesional en GitHub. Esta capacitación fue brindada por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través de la Agencia de Habilidades para el Futuro y el programa Talento Tech, en julio de 2025.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section
+        id="hero"
+        class="section-hero"
+        style="
+          background:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) center/cover,
+            url(&quot;img/hero-bg-39ed6d.jpg&quot;) center/cover no-repeat;
+          padding: 6rem 0;
+        "
+      >
+        <div class="container">
+          <div class="hero-portfolio-layout">
+            <div class="hero-avatar-box">
+              <img
+                src="img/hero-avatar-710cf7.jpg"
+                alt="Carlos Marcelo Hernandez"
+                class="hero-avatar-img"
+                loading="eager"
+                decoding="async"
+              />
             </div>
-
-            <div class="dual-slide-card" data-slide-index="1">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-2-40222d.jpg', 'Curso de Introducción a Git y GitHub', 'Certificado de finalización del curso &quot;Introducción a Git y GitHub&quot; otorgado por TodoCode. Esta capacitación fue completada con éxito el 20 de septiembre de 2026.')">
-                <img src="img/gallery-2-40222d.jpg" alt="Curso de Introducción a Git y GitHub" loading="lazy"/>
+            <div class="hero-portfolio-content">
+              <div class="hero-status-pill">
+                <span
+                  class="status-indicator-dot"
+                  style="background: #10b981; box-shadow: 0 0 10px #10b981"
+                ></span
+                ><span>Disponible para proyectos</span>
               </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Introducción a Git y GitHub</h3>
-                <p class="dual-slide-desc">Certificado de finalización del curso &quot;Introducción a Git y GitHub&quot; otorgado por TodoCode. Esta capacitación fue completada con éxito el 20 de septiembre de 2026.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-2-40222d.jpg', 'Curso de Introducción a Git y GitHub', 'Certificado de finalización del curso &quot;Introducción a Git y GitHub&quot; otorgado por TodoCode. Esta capacitación fue completada con éxito el 20 de septiembre de 2026.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
+              <h1 class="hero-portfolio-title">Carlos Marcelo Hernandez</h1>
+              <div class="hero-portfolio-role">
+                Desarrollador de Software en formación
               </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="2">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-3-a01f62.jpg', 'Reparación de Celulares y Tablets', 'Certificado de Aprobación de Capacitación Laboral en el curso de &quot;Reparador de Teléfonos Celulares y Tablets&quot;. Esta formación técnica cuenta con una carga horaria de 50 horas y fue cursada en el Centro de Formación Profesional Nro. 35. La certificación está avalada oficialmente por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires.')">
-                <img src="img/gallery-3-a01f62.jpg" alt="Reparación de Celulares y Tablets" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Reparación de Celulares y Tablets</h3>
-                <p class="dual-slide-desc">Certificado de Aprobación de Capacitación Laboral en el curso de &quot;Reparador de Teléfonos Celulares y Tablets&quot;. Esta formación técnica cuenta con una carga horaria de 50 horas y fue cursada en el Centro de Formación Profesional Nro. 35. La certificación está avalada oficialmente por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-3-a01f62.jpg', 'Reparación de Celulares y Tablets', 'Certificado de Aprobación de Capacitación Laboral en el curso de &quot;Reparador de Teléfonos Celulares y Tablets&quot;. Esta formación técnica cuenta con una carga horaria de 50 horas y fue cursada en el Centro de Formación Profesional Nro. 35. La certificación está avalada oficialmente por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="3">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-1-5edb9d.jpg', 'Innovación &amp; Tecnología', 'Soluciones interactivas con efectos dinámicos modernos, animaciones fluidas y visualización de productos en alta resolución.')">
-                <img src="img/gallery-1-5edb9d.jpg" alt="IMG 4 - Portafolio 3D" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Innovación &amp; Tecnología</h3>
-                <p class="dual-slide-desc">Soluciones interactivas con efectos dinámicos modernos, animaciones fluidas y visualización de productos en alta resolución.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-1-5edb9d.jpg', 'Innovación &amp; Tecnología', 'Soluciones interactivas con efectos dinámicos modernos, animaciones fluidas y visualización de productos en alta resolución.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="4">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-5-2eb348.jpg', 'Curso de Python', 'Certificado de finalización del curso de Python otorgado por Santander Open Academy. Esta capacitación, completada en mayo de 2025, consta de 8 horas de cursada estructuradas en 2 módulos con instancias de autoevaluación.')">
-                <img src="img/gallery-5-2eb348.jpg" alt="Curso de Python" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Python</h3>
-                <p class="dual-slide-desc">Certificado de finalización del curso de Python otorgado por Santander Open Academy. Esta capacitación, completada en mayo de 2025, consta de 8 horas de cursada estructuradas en 2 módulos con instancias de autoevaluación.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-5-2eb348.jpg', 'Curso de Python', 'Certificado de finalización del curso de Python otorgado por Santander Open Academy. Esta capacitación, completada en mayo de 2025, consta de 8 horas de cursada estructuradas en 2 módulos con instancias de autoevaluación.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="5">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-6-36a8c6.jpg', 'Semana de Python en la Práctica', 'Certificado de participación en el evento &quot;Semana de Python en la Práctica&quot; otorgado por Daxus Latam. Este evento formativo tuvo una duración de 8 horas y fue emitido en febrero de 2026.')">
-                <img src="img/gallery-6-36a8c6.jpg" alt="NuevaSemana de Python en la Práctica foto" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Semana de Python en la Práctica</h3>
-                <p class="dual-slide-desc">Certificado de participación en el evento &quot;Semana de Python en la Práctica&quot; otorgado por Daxus Latam. Este evento formativo tuvo una duración de 8 horas y fue emitido en febrero de 2026.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-6-36a8c6.jpg', 'Semana de Python en la Práctica', 'Certificado de participación en el evento &quot;Semana de Python en la Práctica&quot; otorgado por Daxus Latam. Este evento formativo tuvo una duración de 8 horas y fue emitido en febrero de 2026.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="6">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-7-facf77.jpg', 'Curso de Desarrollo Web 1', 'Certificado que acredita la finalización del curso &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.')">
-                <img src="img/gallery-7-facf77.jpg" alt="Curso de Desarrollo Web 1" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Desarrollo Web 1</h3>
-                <p class="dual-slide-desc">Certificado que acredita la finalización del curso &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-7-facf77.jpg', 'Curso de Desarrollo Web 1', 'Certificado que acredita la finalización del curso &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="7">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-8-fe84ca.jpg', 'Curso de Desarrollo Web 2', 'Certificado que acredita la finalización del curso &quot;Desarrollo Web 2&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en diciembre de 2023.')">
-                <img src="img/gallery-8-fe84ca.jpg" alt="Curso de Desarrollo Web 2" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Desarrollo Web 2</h3>
-                <p class="dual-slide-desc">Certificado que acredita la finalización del curso &quot;Desarrollo Web 2&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en diciembre de 2023.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-8-fe84ca.jpg', 'Curso de Desarrollo Web 2', 'Certificado que acredita la finalización del curso &quot;Desarrollo Web 2&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en diciembre de 2023.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="8">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-9-966496.jpg', 'Curso de Desarrollo Web 1 - UTN', 'Certificado de participación en el curso &quot;Desarrollo Web 1&quot; otorgado por la Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda. Este documento fue emitido el 13 de julio de 2023.')">
-                <img src="img/gallery-9-966496.jpg" alt="Curso de Desarrollo Web 1 - UTN" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Desarrollo Web 1 - UTN</h3>
-                <p class="dual-slide-desc">Certificado de participación en el curso &quot;Desarrollo Web 1&quot; otorgado por la Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda. Este documento fue emitido el 13 de julio de 2023.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-9-966496.jpg', 'Curso de Desarrollo Web 1 - UTN', 'Certificado de participación en el curso &quot;Desarrollo Web 1&quot; otorgado por la Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda. Este documento fue emitido el 13 de julio de 2023.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="9">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-10-06c998.jpg', 'Curso de Unity 2D', 'Constancia de finalización con éxito del curso de Unity 2D. Esta formación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro, en julio de 2026.')">
-                <img src="img/gallery-10-06c998.jpg" alt="Curso de Unity 2D" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Unity 2D</h3>
-                <p class="dual-slide-desc">Constancia de finalización con éxito del curso de Unity 2D. Esta formación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro, en julio de 2026.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-10-06c998.jpg', 'Curso de Unity 2D', 'Constancia de finalización con éxito del curso de Unity 2D. Esta formación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro, en julio de 2026.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="10">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-11-ee582e.jpg', 'Curso de Iniciación con Python', 'Constancia de finalización con éxito del curso de &quot;Iniciación con Python&quot;. Esta capacitación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro.')">
-                <img src="img/gallery-11-ee582e.jpg" alt="Curso de Iniciación con Python" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Iniciación con Python</h3>
-                <p class="dual-slide-desc">Constancia de finalización con éxito del curso de &quot;Iniciación con Python&quot;. Esta capacitación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-11-ee582e.jpg', 'Curso de Iniciación con Python', 'Constancia de finalización con éxito del curso de &quot;Iniciación con Python&quot;. Esta capacitación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="11">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-12-953a30.jpg', 'Curso de Base de Datos (SQL)', 'Certificado que acredita la finalización satisfactoria del curso &quot;Base de Datos (SQL)&quot;. Esta capacitación fue otorgada por la Municipalidad de Tres de Febrero a través del programa TECNO3F, en diciembre de 2025.')">
-                <img src="img/gallery-12-953a30.jpg" alt="Curso de Base de Datos (SQL)" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Base de Datos (SQL)</h3>
-                <p class="dual-slide-desc">Certificado que acredita la finalización satisfactoria del curso &quot;Base de Datos (SQL)&quot;. Esta capacitación fue otorgada por la Municipalidad de Tres de Febrero a través del programa TECNO3F, en diciembre de 2025.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-12-953a30.jpg', 'Curso de Base de Datos (SQL)', 'Certificado que acredita la finalización satisfactoria del curso &quot;Base de Datos (SQL)&quot;. Esta capacitación fue otorgada por la Municipalidad de Tres de Febrero a través del programa TECNO3F, en diciembre de 2025.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="12">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-13-8b0ed0.jpg', 'Curso de Desarrollo de aplicaciones móviles con Kotlin', 'Certificado que acredita la finalización del curso &quot;Desarrollo de aplicaciones móviles con Kotlin&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.')">
-                <img src="img/gallery-13-8b0ed0.jpg" alt="Curso de Desarrollo de aplicaciones móviles con Kotlin" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Curso de Desarrollo de aplicaciones móviles con Kotlin</h3>
-                <p class="dual-slide-desc">Certificado que acredita la finalización del curso &quot;Desarrollo de aplicaciones móviles con Kotlin&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-13-8b0ed0.jpg', 'Curso de Desarrollo de aplicaciones móviles con Kotlin', 'Certificado que acredita la finalización del curso &quot;Desarrollo de aplicaciones móviles con Kotlin&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="13">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-14-da4131.jpg', 'AWS Academy Graduate - Cloud Foundations', 'Certificado de finalización del curso &quot;AWS Academy Graduate - Cloud Foundations - Training Badge&quot; otorgado por AWS Academy. Esta capacitación acredita 20 horas de cursada completadas y fue emitida el 20 de septiembre de 2026, respaldada por una insignia digital verificable a través de Credly.')">
-                <img src="img/gallery-14-da4131.jpg" alt="AWS Academy Graduate - Cloud Foundations" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">AWS Academy Graduate - Cloud Foundations</h3>
-                <p class="dual-slide-desc">Certificado de finalización del curso &quot;AWS Academy Graduate - Cloud Foundations - Training Badge&quot; otorgado por AWS Academy. Esta capacitación acredita 20 horas de cursada completadas y fue emitida el 20 de septiembre de 2026, respaldada por una insignia digital verificable a través de Credly.</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-14-da4131.jpg', 'AWS Academy Graduate - Cloud Foundations', 'Certificado de finalización del curso &quot;AWS Academy Graduate - Cloud Foundations - Training Badge&quot; otorgado por AWS Academy. Esta capacitación acredita 20 horas de cursada completadas y fue emitida el 20 de septiembre de 2026, respaldada por una insignia digital verificable a través de Credly.')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="dual-slide-card" data-slide-index="14">
-              <div class="dual-slide-img-box" onclick="openImageModal('img/gallery-15-167304.jpg', 'Desarrollo con IA', 'Taller de Iniciación al Desarrollo con IA')">
-                <img src="img/gallery-15-167304.jpg" alt="Nueva foto" loading="lazy"/>
-              </div>
-              <div class="dual-slide-body">
-                <h3 class="dual-slide-title">Desarrollo con IA</h3>
-                <p class="dual-slide-desc">Taller de Iniciación al Desarrollo con IA</p>
-                <div class="dual-slide-footer">
-                  <button type="button" class="dual-slide-btn" onclick="openImageModal('img/gallery-15-167304.jpg', 'Desarrollo con IA', 'Taller de Iniciación al Desarrollo con IA')">
-                    <span>📖 Ver más</span>
-                    <span>→</span>
-                  </button>
-                </div>
+              <p class="hero-portfolio-desc">
+                Estudiante en el IFTS 29. Me apasiona el desarrollo web y
+                resolver problemas lógicos, el desarrollo de aplicaciones y la
+                creación de videojuegos con Unity. Siempre buscando aprender
+                nuevas tecnologías. Tambien soy fan del hardware y la
+                electrónica, me gusta armar y desarmar computadoras y celulares.
+              </p>
+              <div class="hero-portfolio-buttons">
+                <a
+                  href="https://github.com/cmarceloh"
+                  class="btn btn-primary"
+                  style="
+                    background: #ffffff;
+                    color: #05668d;
+                    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+                  "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Visitar mi perfil de GitHub</a
+                >
               </div>
             </div>
           </div>
         </div>
-        
-          <button type="button" class="dual-slider-arrow dual-slider-prev" aria-label="Anterior">‹</button>
-          <button type="button" class="dual-slider-arrow dual-slider-next" aria-label="Siguiente">›</button>
-          <div class="dual-slider-dots"><button type="button" class="dual-slider-dot is-active" aria-label="Ir a diapositiva 1" data-dot-index="0"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 2" data-dot-index="1"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 3" data-dot-index="2"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 4" data-dot-index="3"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 5" data-dot-index="4"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 6" data-dot-index="5"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 7" data-dot-index="6"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 8" data-dot-index="7"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 9" data-dot-index="8"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 10" data-dot-index="9"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 11" data-dot-index="10"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 12" data-dot-index="11"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 13" data-dot-index="12"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 14" data-dot-index="13"></button><button type="button" class="dual-slider-dot" aria-label="Ir a diapositiva 15" data-dot-index="14"></button></div>
-        
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<footer id="footer" class="site-footer">
-  <div class="container footer-container">
-    <div class="footer-row-main">
-      <div class="footer-brand-col">
-        <h3 class="footer-brand-title">Mi Portafolio</h3>
-        <p class="footer-brand-tagline">Mi Hobbie !</p>
-      </div>
-      <div class="footer-nav-col">
-        
-        <div class="footer-social-group"><a href="" target="_blank" rel="noopener" class="social-btn" title="facebook" aria-label="facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="instagram" aria-label="instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="linkedin" aria-label="linkedin"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="twitter" aria-label="twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
-      </div>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="footer-row-bottom">
-      <small class="footer-copy">© 2026 CM-Hernandez. Todos los derechos reservados.</small>
-      <div class="footer-designed-by">
-        <a href="https://github.com/cmarceloh" target="_blank" rel="noopener noreferrer" class="designed-by-btn">
-          <span>Diseñado por</span>
-          <strong>CM-Hernandez</strong>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-  </main>
+      <section id="slideshow" class="section-slideshow">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 2.2rem">
+            <h2 style="font-size: 2.4rem; margin-bottom: 0.6rem">
+              Formación y Certificaciones
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: 1.15rem">
+              Un recorrido por mis estudios, capacitaciones y logros
+              profesionales.
+            </p>
+          </div>
+          <div class="dual-slider-container" data-interval="3" data-total="15">
+            <div class="dual-slider-box">
+              <div class="slider-progress-bar">
+                <div class="slider-progress-fill"></div>
+              </div>
+              <div class="dual-slider-viewport">
+                <div class="dual-slider-stage">
+                  <div class="dual-slide-card" data-slide-index="0">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-1-5edb9d.jpg',
+                          'Taller GitHub',
+                          'Constancia de participación en el taller enfocado en la creación y armado del perfil profesional en GitHub. Esta capacitación fue brindada por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través de la Agencia de Habilidades para el Futuro y el programa Talento Tech, en julio de 2025.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-1-5edb9d.jpg"
+                        alt="Taller GitHub"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">Taller GitHub</h3>
+                      <p class="dual-slide-desc">
+                        Constancia de participación en el taller enfocado en la
+                        creación y armado del perfil profesional en GitHub. Esta
+                        capacitación fue brindada por el Ministerio de Educación
+                        de la Ciudad Autónoma de Buenos Aires a través de la
+                        Agencia de Habilidades para el Futuro y el programa
+                        Talento Tech, en julio de 2025.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-1-5edb9d.jpg',
+                              'Taller GitHub',
+                              'Constancia de participación en el taller enfocado en la creación y armado del perfil profesional en GitHub. Esta capacitación fue brindada por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través de la Agencia de Habilidades para el Futuro y el programa Talento Tech, en julio de 2025.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-  <!-- VENTANA EMERGENTE CENTRADA (MODAL / LIGHTBOX DE IMAGEN) -->
-  <div id="imageDetailModal" class="img-modal-backdrop" aria-hidden="true">
-    <div class="img-modal-overlay" onclick="closeImageModal()"></div>
-    <div class="img-modal-dialog" role="dialog" aria-modal="true">
-      <button type="button" class="img-modal-close" onclick="closeImageModal()" aria-label="Cerrar ventana">✕</button>
-      <div class="img-modal-figure">
-        <img id="imgModalSrc" src="" alt="Detalle" />
-      </div>
-      <div class="img-modal-info">
-        <h3 id="imgModalTitle" class="img-modal-title"></h3>
-        <div class="img-modal-scroll">
-          <p id="imgModalDesc" class="img-modal-desc"></p>
+                  <div class="dual-slide-card" data-slide-index="1">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-2-40222d.jpg',
+                          'Curso de Introducción a Git y GitHub',
+                          'Certificado de finalización del curso &quot;Introducción a Git y GitHub&quot; otorgado por TodoCode. Esta capacitación fue completada con éxito el 20 de septiembre de 2026.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-2-40222d.jpg"
+                        alt="Curso de Introducción a Git y GitHub"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Introducción a Git y GitHub
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado de finalización del curso &quot;Introducción
+                        a Git y GitHub&quot; otorgado por TodoCode. Esta
+                        capacitación fue completada con éxito el 20 de
+                        septiembre de 2026.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-2-40222d.jpg',
+                              'Curso de Introducción a Git y GitHub',
+                              'Certificado de finalización del curso &quot;Introducción a Git y GitHub&quot; otorgado por TodoCode. Esta capacitación fue completada con éxito el 20 de septiembre de 2026.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="2">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-3-a01f62.jpg',
+                          'Reparación de Celulares y Tablets',
+                          'Certificado de Aprobación de Capacitación Laboral en el curso de &quot;Reparador de Teléfonos Celulares y Tablets&quot;. Esta formación técnica cuenta con una carga horaria de 50 horas y fue cursada en el Centro de Formación Profesional Nro. 35. La certificación está avalada oficialmente por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-3-a01f62.jpg"
+                        alt="Reparación de Celulares y Tablets"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Reparación de Celulares y Tablets
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado de Aprobación de Capacitación Laboral en el
+                        curso de &quot;Reparador de Teléfonos Celulares y
+                        Tablets&quot;. Esta formación técnica cuenta con una
+                        carga horaria de 50 horas y fue cursada en el Centro de
+                        Formación Profesional Nro. 35. La certificación está
+                        avalada oficialmente por el Ministerio de Educación del
+                        Gobierno de la Ciudad de Buenos Aires.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-3-a01f62.jpg',
+                              'Reparación de Celulares y Tablets',
+                              'Certificado de Aprobación de Capacitación Laboral en el curso de &quot;Reparador de Teléfonos Celulares y Tablets&quot;. Esta formación técnica cuenta con una carga horaria de 50 horas y fue cursada en el Centro de Formación Profesional Nro. 35. La certificación está avalada oficialmente por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="3">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-1-5edb9d.jpg',
+                          'Innovación &amp; Tecnología',
+                          'Soluciones interactivas con efectos dinámicos modernos, animaciones fluidas y visualización de productos en alta resolución.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-1-5edb9d.jpg"
+                        alt="IMG 4 - Portafolio 3D"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Innovación &amp; Tecnología
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Soluciones interactivas con efectos dinámicos modernos,
+                        animaciones fluidas y visualización de productos en alta
+                        resolución.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-1-5edb9d.jpg',
+                              'Innovación &amp; Tecnología',
+                              'Soluciones interactivas con efectos dinámicos modernos, animaciones fluidas y visualización de productos en alta resolución.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="4">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-5-2eb348.jpg',
+                          'Curso de Python',
+                          'Certificado de finalización del curso de Python otorgado por Santander Open Academy. Esta capacitación, completada en mayo de 2025, consta de 8 horas de cursada estructuradas en 2 módulos con instancias de autoevaluación.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-5-2eb348.jpg"
+                        alt="Curso de Python"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">Curso de Python</h3>
+                      <p class="dual-slide-desc">
+                        Certificado de finalización del curso de Python otorgado
+                        por Santander Open Academy. Esta capacitación,
+                        completada en mayo de 2025, consta de 8 horas de cursada
+                        estructuradas en 2 módulos con instancias de
+                        autoevaluación.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-5-2eb348.jpg',
+                              'Curso de Python',
+                              'Certificado de finalización del curso de Python otorgado por Santander Open Academy. Esta capacitación, completada en mayo de 2025, consta de 8 horas de cursada estructuradas en 2 módulos con instancias de autoevaluación.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="5">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-6-36a8c6.jpg',
+                          'Semana de Python en la Práctica',
+                          'Certificado de participación en el evento &quot;Semana de Python en la Práctica&quot; otorgado por Daxus Latam. Este evento formativo tuvo una duración de 8 horas y fue emitido en febrero de 2026.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-6-36a8c6.jpg"
+                        alt="NuevaSemana de Python en la Práctica foto"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Semana de Python en la Práctica
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado de participación en el evento &quot;Semana
+                        de Python en la Práctica&quot; otorgado por Daxus Latam.
+                        Este evento formativo tuvo una duración de 8 horas y fue
+                        emitido en febrero de 2026.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-6-36a8c6.jpg',
+                              'Semana de Python en la Práctica',
+                              'Certificado de participación en el evento &quot;Semana de Python en la Práctica&quot; otorgado por Daxus Latam. Este evento formativo tuvo una duración de 8 horas y fue emitido en febrero de 2026.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="6">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-7-facf77.jpg',
+                          'Curso de Desarrollo Web 1',
+                          'Certificado que acredita la finalización del curso &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-7-facf77.jpg"
+                        alt="Curso de Desarrollo Web 1"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Desarrollo Web 1
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado que acredita la finalización del curso
+                        &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación
+                        fue otorgada por el Ministerio de Educación del Gobierno
+                        de la Ciudad de Buenos Aires en el marco del programa
+                        Aprendé Programando - Secundaria, en julio de 2023.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-7-facf77.jpg',
+                              'Curso de Desarrollo Web 1',
+                              'Certificado que acredita la finalización del curso &quot;Desarrollo Web 1 - 2023&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="7">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-8-fe84ca.jpg',
+                          'Curso de Desarrollo Web 2',
+                          'Certificado que acredita la finalización del curso &quot;Desarrollo Web 2&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en diciembre de 2023.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-8-fe84ca.jpg"
+                        alt="Curso de Desarrollo Web 2"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Desarrollo Web 2
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado que acredita la finalización del curso
+                        &quot;Desarrollo Web 2&quot;. Esta capacitación fue
+                        otorgada por el Ministerio de Educación del Gobierno de
+                        la Ciudad de Buenos Aires en el marco del programa
+                        Aprendé Programando - Secundaria, en diciembre de 2023.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-8-fe84ca.jpg',
+                              'Curso de Desarrollo Web 2',
+                              'Certificado que acredita la finalización del curso &quot;Desarrollo Web 2&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en diciembre de 2023.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="8">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-9-966496.jpg',
+                          'Curso de Desarrollo Web 1 - UTN',
+                          'Certificado de participación en el curso &quot;Desarrollo Web 1&quot; otorgado por la Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda. Este documento fue emitido el 13 de julio de 2023.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-9-966496.jpg"
+                        alt="Curso de Desarrollo Web 1 - UTN"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Desarrollo Web 1 - UTN
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado de participación en el curso
+                        &quot;Desarrollo Web 1&quot; otorgado por la Universidad
+                        Tecnológica Nacional (UTN) - Facultad Regional
+                        Avellaneda. Este documento fue emitido el 13 de julio de
+                        2023.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-9-966496.jpg',
+                              'Curso de Desarrollo Web 1 - UTN',
+                              'Certificado de participación en el curso &quot;Desarrollo Web 1&quot; otorgado por la Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda. Este documento fue emitido el 13 de julio de 2023.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="9">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-10-06c998.jpg',
+                          'Curso de Unity 2D',
+                          'Constancia de finalización con éxito del curso de Unity 2D. Esta formación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro, en julio de 2026.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-10-06c998.jpg"
+                        alt="Curso de Unity 2D"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">Curso de Unity 2D</h3>
+                      <p class="dual-slide-desc">
+                        Constancia de finalización con éxito del curso de Unity
+                        2D. Esta formación, con una duración de 80 horas reloj,
+                        fue impartida por el Ministerio de Educación de la
+                        Ciudad Autónoma de Buenos Aires a través del programa
+                        Talento Tech y la Agencia de Habilidades para el Futuro,
+                        en julio de 2026.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-10-06c998.jpg',
+                              'Curso de Unity 2D',
+                              'Constancia de finalización con éxito del curso de Unity 2D. Esta formación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro, en julio de 2026.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="10">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-11-ee582e.jpg',
+                          'Curso de Iniciación con Python',
+                          'Constancia de finalización con éxito del curso de &quot;Iniciación con Python&quot;. Esta capacitación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-11-ee582e.jpg"
+                        alt="Curso de Iniciación con Python"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Iniciación con Python
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Constancia de finalización con éxito del curso de
+                        &quot;Iniciación con Python&quot;. Esta capacitación,
+                        con una duración de 80 horas reloj, fue impartida por el
+                        Ministerio de Educación de la Ciudad Autónoma de Buenos
+                        Aires a través del programa Talento Tech y la Agencia de
+                        Habilidades para el Futuro.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-11-ee582e.jpg',
+                              'Curso de Iniciación con Python',
+                              'Constancia de finalización con éxito del curso de &quot;Iniciación con Python&quot;. Esta capacitación, con una duración de 80 horas reloj, fue impartida por el Ministerio de Educación de la Ciudad Autónoma de Buenos Aires a través del programa Talento Tech y la Agencia de Habilidades para el Futuro.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="11">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-12-953a30.jpg',
+                          'Curso de Base de Datos (SQL)',
+                          'Certificado que acredita la finalización satisfactoria del curso &quot;Base de Datos (SQL)&quot;. Esta capacitación fue otorgada por la Municipalidad de Tres de Febrero a través del programa TECNO3F, en diciembre de 2025.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-12-953a30.jpg"
+                        alt="Curso de Base de Datos (SQL)"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Base de Datos (SQL)
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado que acredita la finalización satisfactoria
+                        del curso &quot;Base de Datos (SQL)&quot;. Esta
+                        capacitación fue otorgada por la Municipalidad de Tres
+                        de Febrero a través del programa TECNO3F, en diciembre
+                        de 2025.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-12-953a30.jpg',
+                              'Curso de Base de Datos (SQL)',
+                              'Certificado que acredita la finalización satisfactoria del curso &quot;Base de Datos (SQL)&quot;. Esta capacitación fue otorgada por la Municipalidad de Tres de Febrero a través del programa TECNO3F, en diciembre de 2025.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="12">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-13-8b0ed0.jpg',
+                          'Curso de Desarrollo de aplicaciones móviles con Kotlin',
+                          'Certificado que acredita la finalización del curso &quot;Desarrollo de aplicaciones móviles con Kotlin&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-13-8b0ed0.jpg"
+                        alt="Curso de Desarrollo de aplicaciones móviles con Kotlin"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        Curso de Desarrollo de aplicaciones móviles con Kotlin
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado que acredita la finalización del curso
+                        &quot;Desarrollo de aplicaciones móviles con
+                        Kotlin&quot;. Esta capacitación fue otorgada por el
+                        Ministerio de Educación del Gobierno de la Ciudad de
+                        Buenos Aires en el marco del programa Aprendé
+                        Programando - Secundaria, en julio de 2023.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-13-8b0ed0.jpg',
+                              'Curso de Desarrollo de aplicaciones móviles con Kotlin',
+                              'Certificado que acredita la finalización del curso &quot;Desarrollo de aplicaciones móviles con Kotlin&quot;. Esta capacitación fue otorgada por el Ministerio de Educación del Gobierno de la Ciudad de Buenos Aires en el marco del programa Aprendé Programando - Secundaria, en julio de 2023.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="13">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-14-da4131.jpg',
+                          'AWS Academy Graduate - Cloud Foundations',
+                          'Certificado de finalización del curso &quot;AWS Academy Graduate - Cloud Foundations - Training Badge&quot; otorgado por AWS Academy. Esta capacitación acredita 20 horas de cursada completadas y fue emitida el 20 de septiembre de 2026, respaldada por una insignia digital verificable a través de Credly.',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-14-da4131.jpg"
+                        alt="AWS Academy Graduate - Cloud Foundations"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">
+                        AWS Academy Graduate - Cloud Foundations
+                      </h3>
+                      <p class="dual-slide-desc">
+                        Certificado de finalización del curso &quot;AWS Academy
+                        Graduate - Cloud Foundations - Training Badge&quot;
+                        otorgado por AWS Academy. Esta capacitación acredita 20
+                        horas de cursada completadas y fue emitida el 20 de
+                        septiembre de 2026, respaldada por una insignia digital
+                        verificable a través de Credly.
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-14-da4131.jpg',
+                              'AWS Academy Graduate - Cloud Foundations',
+                              'Certificado de finalización del curso &quot;AWS Academy Graduate - Cloud Foundations - Training Badge&quot; otorgado por AWS Academy. Esta capacitación acredita 20 horas de cursada completadas y fue emitida el 20 de septiembre de 2026, respaldada por una insignia digital verificable a través de Credly.',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="dual-slide-card" data-slide-index="14">
+                    <div
+                      class="dual-slide-img-box"
+                      onclick="
+                        openImageModal(
+                          'img/gallery-15-167304.jpg',
+                          'Desarrollo con IA',
+                          'Taller de Iniciación al Desarrollo con IA',
+                        )
+                      "
+                    >
+                      <img
+                        src="img/gallery-15-167304.jpg"
+                        alt="Nueva foto"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="dual-slide-body">
+                      <h3 class="dual-slide-title">Desarrollo con IA</h3>
+                      <p class="dual-slide-desc">
+                        Taller de Iniciación al Desarrollo con IA
+                      </p>
+                      <div class="dual-slide-footer">
+                        <button
+                          type="button"
+                          class="dual-slide-btn"
+                          onclick="
+                            openImageModal(
+                              'img/gallery-15-167304.jpg',
+                              'Desarrollo con IA',
+                              'Taller de Iniciación al Desarrollo con IA',
+                            )
+                          "
+                        >
+                          <span>📖 Ver más</span>
+                          <span>→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="dual-slider-arrow dual-slider-prev"
+                aria-label="Anterior"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                class="dual-slider-arrow dual-slider-next"
+                aria-label="Siguiente"
+              >
+                ›
+              </button>
+              <div class="dual-slider-dots">
+                <button
+                  type="button"
+                  class="dual-slider-dot is-active"
+                  aria-label="Ir a diapositiva 1"
+                  data-dot-index="0"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 2"
+                  data-dot-index="1"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 3"
+                  data-dot-index="2"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 4"
+                  data-dot-index="3"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 5"
+                  data-dot-index="4"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 6"
+                  data-dot-index="5"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 7"
+                  data-dot-index="6"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 8"
+                  data-dot-index="7"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 9"
+                  data-dot-index="8"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 10"
+                  data-dot-index="9"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 11"
+                  data-dot-index="10"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 12"
+                  data-dot-index="11"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 13"
+                  data-dot-index="12"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 14"
+                  data-dot-index="13"
+                ></button
+                ><button
+                  type="button"
+                  class="dual-slider-dot"
+                  aria-label="Ir a diapositiva 15"
+                  data-dot-index="14"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="footer" class="site-footer">
+        <div class="container footer-container">
+          <div class="footer-row-main">
+            <div class="footer-brand-col">
+              <h3 class="footer-brand-title">Mi Portafolio</h3>
+              <p class="footer-brand-tagline">Mi Hobbie !</p>
+            </div>
+            <div class="footer-nav-col">
+              <div class="footer-social-group">
+                <a
+                  href=""
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  title="facebook"
+                  aria-label="facebook"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                    /></svg></a
+                ><a
+                  href=""
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  title="instagram"
+                  aria-label="instagram"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                    /></svg></a
+                ><a
+                  href=""
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  title="linkedin"
+                  aria-label="linkedin"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    /></svg></a
+                ><a
+                  href=""
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  title="twitter"
+                  aria-label="twitter"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-divider"></div>
+          <div class="footer-row-bottom">
+            <small class="footer-copy"
+              >© 2026 CM-Hernandez. Todos los derechos reservados.</small
+            >
+            <div class="footer-designed-by">
+              <a
+                href="https://github.com/cmarceloh"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="designed-by-btn"
+              >
+                <span>Diseñado por</span>
+                <strong>CM-Hernandez</strong>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  ></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- VENTANA EMERGENTE CENTRADA (MODAL / LIGHTBOX DE IMAGEN) -->
+    <div id="imageDetailModal" class="img-modal-backdrop" aria-hidden="true">
+      <div class="img-modal-overlay" onclick="closeImageModal()"></div>
+      <div class="img-modal-dialog" role="dialog" aria-modal="true">
+        <button
+          type="button"
+          class="img-modal-close"
+          onclick="closeImageModal()"
+          aria-label="Cerrar ventana"
+        >
+          ✕
+        </button>
+        <div class="img-modal-figure">
+          <img id="imgModalSrc" src="" alt="Detalle" />
+        </div>
+        <div class="img-modal-info">
+          <h3 id="imgModalTitle" class="img-modal-title"></h3>
+          <div class="img-modal-scroll">
+            <p id="imgModalDesc" class="img-modal-desc"></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
