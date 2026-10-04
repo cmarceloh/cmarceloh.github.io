@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#115e59"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+    <linearGradient id="btnGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g2)"/>
+
+  <!-- Geometric rings -->
+  <circle cx="400" cy="240" r="150" fill="none" stroke="#2dd4bf" stroke-width="5" opacity="0.6"/>
+  <circle cx="400" cy="240" r="105" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="10 10" opacity="0.5"/>
+  
+  <g transform="translate(335, 175)">
+    <polygon points="65,0 130,115 0,115" fill="#2dd4bf" opacity="0.95"/>
+    <circle cx="65" cy="60" r="24" fill="#0f172a"/>
+  </g>
+
+  <!-- Color Palette Card -->
+  <g transform="translate(180, 340)">
+    <rect width="440" height="90" rx="16" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <circle cx="50" cy="45" r="20" fill="#2dd4bf"/>
+    <circle cx="100" cy="45" r="20" fill="#38bdf8"/>
+    <circle cx="150" cy="45" r="20" fill="#818cf8"/>
+    <text x="195" y="42" font-family="system-ui, sans-serif" font-size="17" font-weight="800" fill="#ffffff">Brand Design &amp; Identity</text>
+    <text x="195" y="64" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Logos, tipografias y vectores</text>
+  </g>
+
+  <!-- Big Prominent IMG 2 Badge -->
+  <g transform="translate(400, 510)">
+    <rect x="-240" y="-35" width="480" height="70" rx="35" fill="url(#btnGrad2)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">
+      🎨 IMG 2 • BRANDING
+    </text>
+  </g>
+</svg>
