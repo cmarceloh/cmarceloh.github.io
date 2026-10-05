@@ -1,0 +1,58 @@
+# ══════════════════════════════════════════════════════════════════
+# .htaccess — Seguridad, Protección contra Ataques y Rendimiento
+# Generado automáticamente por CMH Landing Builder
+# ══════════════════════════════════════════════════════════════════
+
+# 1. Deshabilitar listado de directorios (evita que exploren las carpetas del servidor)
+Options -Indexes
+
+# 2. Bloquear acceso a archivos sensibles y ocultos (.htaccess, .env, .git, etc.)
+<FilesMatch "^\.(.*)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 3. Cabeceras HTTP de Seguridad
+<IfModule mod_headers.c>
+    # Prevenir Clickjacking (evita que incrusten tu web en iframes maliciosos)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Prevenir ataques MIME-sniffing (fuerza al navegador a respetar los tipos de contenido)
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Protección XSS básica para navegadores
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Política de referer segura
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 4. Proteger contacto.php contra métodos HTTP no autorizados
+<Files "contacto.php">
+    <LimitExcept POST OPTIONS>
+        Order deny,allow
+        Deny from all
+    </LimitExcept>
+</Files>
+
+# 5. Compresión GZIP para máxima velocidad de carga
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# 6. Caché del navegador para imágenes y estilos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

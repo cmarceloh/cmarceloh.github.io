@@ -164,7 +164,8 @@
       }
 
       // Intento 1: Servidor PHP propio (contacto.php)
-      var phpUrl = new URL('contacto.php', window.location.href).href;
+      var endpoint = form.getAttribute('action') || (window.location.pathname.indexOf('/pages/') !== -1 ? '../contacto.php' : 'contacto.php');
+      var phpUrl = new URL(endpoint, window.location.href).href;
       var data = new FormData(form);
 
       fetch(phpUrl, {
