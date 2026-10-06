@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="btnGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g1)"/>
+  
+  <!-- Subtle decorative grid -->
+  <g stroke="rgba(255,255,255,0.08)" stroke-width="1.5">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+
+  <!-- Window card -->
+  <g transform="translate(130, 90)">
+    <rect width="540" height="360" rx="20" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+    <!-- Dots -->
+    <circle cx="36" cy="30" r="7" fill="#ef4444"/>
+    <circle cx="58" cy="30" r="7" fill="#eab308"/>
+    <circle cx="80" cy="30" r="7" fill="#22c55e"/>
+    
+    <!-- Wireframe blocks -->
+    <rect x="36" y="65" width="220" height="20" rx="5" fill="rgba(255,255,255,0.25)"/>
+    <rect x="36" y="105" width="468" height="12" rx="4" fill="rgba(255,255,255,0.12)"/>
+    <rect x="36" y="127" width="380" height="12" rx="4" fill="rgba(255,255,255,0.12)"/>
+
+    <rect x="36" y="165" width="144" height="150" rx="14" fill="rgba(99, 102, 241, 0.25)" stroke="#6366f1" stroke-width="1.5"/>
+    <rect x="198" y="165" width="144" height="150" rx="14" fill="rgba(168, 85, 247, 0.25)" stroke="#a855f7" stroke-width="1.5"/>
+    <rect x="360" y="165" width="144" height="150" rx="14" fill="rgba(236, 72, 153, 0.25)" stroke="#ec4899" stroke-width="1.5"/>
+  </g>
+
+  <!-- Big Prominent IMG 1 Badge -->
+  <g transform="translate(400, 510)">
+    <rect x="-240" y="-35" width="480" height="70" rx="35" fill="url(#btnGrad1)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="0" y="6" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">
+      ⚡ IMG 1 • PROYECTO WEB
+    </text>
+  </g>
+</svg>
