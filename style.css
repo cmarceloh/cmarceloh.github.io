@@ -4,17 +4,17 @@
 
 /* Variables de diseño — Modo Oscuro por defecto */
 :root, [data-theme="dark"] {
-  --color-primary:     #2563eb;
-  --color-primary-rgb: 37, 99, 235;
-  --color-secondary:   #ff2a5f;
-  --color-accent:      #38bdf8;
-  --color-background:  #0b112c;
-  --color-surface:     #131e47;
-  --color-card-bg:     #1c2b63;
-  --color-header-bg:   rgba(11, 17, 44, 0.94);
-  --color-text:        #eff6ff;
-  --color-text-muted:  #bfdbfe;
-  --color-border:      rgba(37, 99, 235, 0.35);
+  --color-primary:     #10b981;
+  --color-primary-rgb: 16, 185, 129;
+  --color-secondary:   #34d399;
+  --color-accent:      #6ee7b7;
+  --color-background:  #091e17;
+  --color-surface:     #0f2c22;
+  --color-card-bg:     #14382c;
+  --color-header-bg:   rgba(9, 30, 23, 0.94);
+  --color-text:        #f8fafc;
+  --color-text-muted:  #a7f3d0;
+  --color-border:      rgba(16, 185, 129, 0.2);
   --color-hover-bg:    rgba(255, 255, 255, 0.08);
   --font-heading:      'Fira Code', monospace;
   --font-body:         'Fira Code', monospace;
@@ -23,17 +23,17 @@
 
 /* Modo Claro calibrado */
 [data-theme="light"] {
-  --color-primary:     #2563eb;
-  --color-primary-rgb: 37, 99, 235;
-  --color-secondary:   #ff2a5f;
-  --color-accent:      #38bdf8;
-  --color-background:  #eff6ff;
+  --color-primary:     #10b981;
+  --color-primary-rgb: 16, 185, 129;
+  --color-secondary:   #34d399;
+  --color-accent:      #6ee7b7;
+  --color-background:  #f0fdf4;
   --color-surface:     #ffffff;
   --color-card-bg:     #ffffff;
-  --color-header-bg:   rgba(239, 246, 255, 0.94);
-  --color-text:        #1e3a8a;
-  --color-text-muted:  #475569;
-  --color-border:      rgba(37, 99, 235, 0.18);
+  --color-header-bg:   rgba(255, 255, 255, 0.94);
+  --color-text:        #064e3b;
+  --color-text-muted:  #4b5563;
+  --color-border:      rgba(16, 185, 129, 0.12);
   --color-hover-bg:    rgba(0, 0, 0, 0.04);
   color-scheme: light;
 }
@@ -1422,17 +1422,19 @@ img {
   .footer-row-bottom { flex-direction: column-reverse; justify-content: center; text-align: center; gap: 1rem; }
   .footer-designed-by { justify-content: center; }
   /* Adaptación Navbar y Logo para Tablet */
-  .brand-text-logo { font-size: 1.3rem; }
+  .brand-text-logo { font-size: 1.35rem; }
   .navbar-brand { max-width: calc(100% - 145px); }
-  html.pixel-mode .brand-text-logo,
+  html.pixel-mode .brand-text-logo {
+    font-size: 1.3rem !important;
+  }
   html.pixel-mode .navbar-brand-name {
-    font-size: 0.9rem !important;
+    font-size: 1.15rem !important;
   }
 }
 
 @media (max-width: 768px) {
   .brand-text-logo {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     white-space: nowrap;
   }
   .navbar-brand {
@@ -1461,12 +1463,14 @@ img {
     height: 38px;
     font-size: 1.1rem;
   }
-  html.pixel-mode .brand-text-logo,
+  html.pixel-mode .brand-text-logo {
+    font-size: 1.15rem !important;
+  }
   html.pixel-mode .navbar-brand-name {
-    font-size: 0.8rem !important;
+    font-size: 1.05rem !important;
   }
   html.pixel-mode .mobile-drawer-title {
-    font-size: 0.72rem !important;
+    font-size: 1.05rem !important;
   }
 }
 
@@ -1479,7 +1483,7 @@ img {
   .btn { width: 100%; }
 
   .brand-text-logo {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
   .navbar-brand {
     max-width: calc(100% - 118px);
@@ -1503,25 +1507,29 @@ img {
     height: 36px;
     font-size: 1rem;
   }
-  html.pixel-mode .brand-text-logo,
+  html.pixel-mode .brand-text-logo {
+    font-size: 1.05rem !important;
+  }
   html.pixel-mode .navbar-brand-name {
-    font-size: 0.72rem !important;
+    font-size: 0.95rem !important;
   }
   html.pixel-mode .mobile-drawer-title {
-    font-size: 0.68rem !important;
+    font-size: 0.95rem !important;
   }
 }
 
 @media (max-width: 380px) {
   .brand-text-logo {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   .navbar-brand {
     max-width: calc(100% - 105px);
   }
-  html.pixel-mode .brand-text-logo,
+  html.pixel-mode .brand-text-logo {
+    font-size: 0.95rem !important;
+  }
   html.pixel-mode .navbar-brand-name {
-    font-size: 0.64rem !important;
+    font-size: 0.88rem !important;
   }
 }
 
@@ -1633,10 +1641,21 @@ html.pixel-mode .hero-portfolio-title {
   line-height: 1.4 !important;
 }
 
-html.pixel-mode .brand-text-logo,
+html.pixel-mode .brand-text-logo {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 1.45rem !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.5px !important;
+  color: #00f0ff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: 2px 2px 0 #000, 0 0 12px rgba(0, 240, 255, 0.5) !important;
+}
+
 html.pixel-mode .navbar-brand-name {
   font-family: 'Press Start 2P', monospace !important;
-  font-size: 1.02rem !important;
+  font-size: 1.2rem !important;
   line-height: 1.25 !important;
   letter-spacing: -0.5px !important;
   color: #00f0ff !important;
@@ -1701,7 +1720,7 @@ html.pixel-mode .mobile-drawer-header {
 
 html.pixel-mode .mobile-drawer-title {
   font-family: 'Press Start 2P', monospace !important;
-  font-size: 0.78rem !important;
+  font-size: 1.05rem !important;
   color: #00f0ff !important;
   white-space: nowrap !important;
   overflow: hidden !important;
