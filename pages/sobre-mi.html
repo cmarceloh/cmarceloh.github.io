@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Favicon / Ícono de la pestaña del navegador -->
+  <link rel="icon" type="image/png" href="../img/favicon.png"/>
+  <link rel="apple-touch-icon" href="../img/favicon.png"/>
+
+  <!-- Script anti-parpadeo tema y modo pixel (Por defecto Oscuro y 8-Bit si el modo pixel está habilitado) -->
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem('cmh-site-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      var savedPixel = localStorage.getItem('cmh-site-pixel');
+      // Por defecto 8-bit está ACTIVO a menos que el visitante lo haya desactivado expresamente ('false')
+      if (savedPixel === null || savedPixel === 'true') {
+        document.documentElement.classList.add('pixel-mode');
+      }
+    })();
+  </script>
+
+  <!-- SEO Meta Tags -->
+  <title>Sobre Mi | Mi Portafolio</title>
+  <meta name="description" content="Mi Portafolio- Carlos Marcelo Hernandez"/>
+  <meta name="keywords" content="portafolio, carlos marcelo hernandez, desarrollo web, 1144048519"/>
+  <meta name="author" content="Mi Portafolio"/>
+  <meta name="robots" content="index, follow"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Sobre Mi | Mi Portafolio"/>
+  <meta property="og:description" content="Mi Portafolio- Carlos Marcelo Hernandez"/>
+
+  <!-- Fuentes Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+  <!-- Capa de scanlines CRT retro (visible sólo cuando se activa el modo pixel) -->
+  <div class="crt-scanlines" aria-hidden="true"></div>
+
+  <!-- HEADER Y NAVEGACIÓN STICKY -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+          <span class="brand-text-logo">Mi Portafolio !</span>
+        </a>
+        <ul class="desktop-nav">
+          <li><a href="../index.html">Inicio</a></li>
+        <li><a href="mis-cursos.html">Mis Cursos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="sobre-mi.html" class="active">Sobre Mi</a></li>
+        </ul>
+        <div class="navbar-actions">
+          
+          <button class="pixel-toggle-btn" id="sitePixelToggle" aria-label="Activar o desactivar modo retro pixel 8-bit" title="Modo Retro 8-Bit Arcade">
+            <span class="pixel-btn-label">
+              <span class="pixel-btn-icon">👾</span>
+              <span class="pixel-btn-text">8-BIT</span>
+            </span>
+          </button>
+          <button class="theme-toggle-btn" id="siteThemeToggle" aria-label="Cambiar tema claro u oscuro" title="Modo Claro / Modo Oscuro">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+          </button>
+          <button class="hamburger-btn" id="siteHamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MENÚ LATERAL MÓVIL / TABLET -->
+  <div class="mobile-overlay" id="siteMobileOverlay"></div>
+  <aside class="mobile-drawer" id="siteMobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="mobile-drawer-title">Mi Portafolio</span>
+      <div class="mobile-drawer-actions">
+        
+        <button class="pixel-toggle-btn" id="siteDrawerPixelToggle" aria-label="Modo pixel" title="Modo Retro 8-Bit">
+          <span class="pixel-btn-label">
+            <span class="pixel-btn-icon">👾</span>
+            <span class="pixel-btn-text">8-BIT</span>
+          </span>
+        </button>
+        <button class="theme-toggle-btn" id="siteDrawerThemeToggle" aria-label="Cambiar tema" title="Modo Claro / Modo Oscuro">
+          <span class="theme-icon-light">☀️</span>
+          <span class="theme-icon-dark">🌙</span>
+        </button>
+        <button class="mobile-drawer-close" id="siteMobileClose" aria-label="Cerrar menú">&times;</button>
+      </div>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+        <li><a href="mis-cursos.html">Mis Cursos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="sobre-mi.html" class="active">Sobre Mi</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <section id="hero" class="section-hero" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) center/cover, url('../img/hero-bg-fa6eb4.jpg') center/cover no-repeat;padding:6rem 0">
+  <div class="container">
+    <div class="hero-portfolio-layout">
+      <div class="hero-avatar-box">
+        <img src="../img/hero-avatar-710cf7.jpg" alt="¿Quién soy?" class="hero-avatar-img" loading="eager" decoding="async"/>
+      </div>
+      <div class="hero-portfolio-content">
+        <div class="hero-status-pill"><span class="status-indicator-dot" style="background:#10b981;box-shadow:0 0 10px #10b981"></span><span>Disponible para proyectos</span></div>
+        <h1 class="hero-portfolio-title">¿Quién soy?</h1>
+        <div class="hero-portfolio-role">Desarrollador de Software en formación</div>
+        <p class="hero-portfolio-desc">Descubrí mi recorrido en el mundo 
+del desarrollo de software y las 
+soluciones tecnológicas.
+
+</p>
+        <div class="hero-portfolio-buttons">
+          <a href="#about" class="btn btn-primary" style="background:#ffffff;color:#15803d;box-shadow:0 4px 18px rgba(0,0,0,.18);">Conoce más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-about">
+  <div class="container">
+    <div class="about-grid"><div class="about-text"><div class="section-tag-badge"><span>TRAYECTORIA &amp; ENFOQUE</span></div><h2>Desarrollador, técnico y apasionado por resolver problemas</h2><p style="white-space:pre-line">Soy un apasionado por la tecnología: me formo como Desarrollador de Software y trabajo como técnico de reparación de PCs y celulares. Sin embargo, mi perfil va más allá de las pantallas. También soy gasista matriculado, una profesión que me encanta porque me permite interactuar con clientes, potenciar mis habilidades blandas y entender que, tanto en una obra como en el desarrollo de software, saber trabajar en equipo es fundamental.
+
+Fuera del ámbito laboral, lo que más disfruto es pasar tiempo en familia. Mi plan perfecto en casa es compartir una buena película o serie con mi señora y mi hija, o tener mis momentos de ocio jugando unas partidas de Tom Clancy&#039;s y eFootball 27. Y cuando buscamos desconectar del todo, mi plan ideal es agarrar el auto y salir a la ruta con destino a la costa: el mar es mi lugar en el mundo.</p></div><div class="about-img-box"><img src="../img/about-img-b6ed4e.jpg" alt="Nuestro equipo" loading="lazy"/></div></div>
+  </div>
+</section>
+
+<footer id="footer" class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-row-main">
+      <div class="footer-brand-col">
+        <h3 class="footer-brand-title">Mi Portafolio</h3>
+        <p class="footer-brand-tagline">Mi Hobbie !</p>
+      </div>
+      <div class="footer-nav-col">
+        
+        <div class="footer-social-group"><a href="" target="_blank" rel="noopener" class="social-btn" title="facebook" aria-label="facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="instagram" aria-label="instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="linkedin" aria-label="linkedin"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a><a href="" target="_blank" rel="noopener" class="social-btn" title="twitter" aria-label="twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-row-bottom">
+      <small class="footer-copy">© 2026 CM-Hernandez. Todos los derechos reservados.</small>
+      <div class="footer-designed-by">
+        <a href="https://github.com/cmarceloh" target="_blank" rel="noopener noreferrer" class="designed-by-btn">
+          <span>Diseñado por</span>
+          <strong>CM-Hernandez</strong>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+  </main>
+
+  <!-- VENTANA EMERGENTE CENTRADA (MODAL / LIGHTBOX DE IMAGEN) -->
+  <div id="imageDetailModal" class="img-modal-backdrop" aria-hidden="true">
+    <div class="img-modal-overlay" onclick="closeImageModal()"></div>
+    <div class="img-modal-dialog" role="dialog" aria-modal="true">
+      <button type="button" class="img-modal-close" onclick="closeImageModal()" aria-label="Cerrar ventana">✕</button>
+      <div class="img-modal-figure">
+        <img id="imgModalSrc" src="" alt="Detalle" />
+      </div>
+      <div class="img-modal-info">
+        <h3 id="imgModalTitle" class="img-modal-title"></h3>
+        <div class="img-modal-scroll">
+          <p id="imgModalDesc" class="img-modal-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
